@@ -52,7 +52,6 @@ while True:
             cv2.circle(frame, (middle_x, middle_y), 10, (255,255,0), -1)
             cv2.circle(frame, (thumb_x, thumb_y), 10, (255,0,0), -1)
 
-            # Cursor movement
             screen_x = int(index.x * screen_w)
             screen_y = int(index.y * screen_h)
 
@@ -65,7 +64,6 @@ while True:
 
             current_time = time.time()
 
-            # Left Click
             if abs(index_x - thumb_x) < 30 and abs(index_y - thumb_y) < 30:
                 if current_time - last_click_time > click_cooldown:
                     pyautogui.click()
@@ -73,7 +71,6 @@ while True:
                     cv2.putText(frame,"LEFT CLICK",(50,50),
                                 cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,255),2)
 
-            # Right Click
             if abs(index_x - middle_x) < 40 and abs(index_y - middle_y) < 40:
                 if current_time - last_click_time > click_cooldown:
                     pyautogui.rightClick()
@@ -81,7 +78,6 @@ while True:
                     cv2.putText(frame,"RIGHT CLICK",(50,100),
                                 cv2.FONT_HERSHEY_SIMPLEX,1,(255,0,0),2)
 
-            # Scroll gesture
             if abs(middle_y - index_y) > 100:
                 pyautogui.scroll(20)
                 cv2.putText(frame,"SCROLL",(50,150),
